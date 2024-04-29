@@ -1,0 +1,4 @@
+.stack-work
+*.log
+*.lock
+config.json
