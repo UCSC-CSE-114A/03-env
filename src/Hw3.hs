@@ -8,7 +8,7 @@
 
 module Hw3 where
 
-import Prelude
+import Prelude hiding (lookup)
 
 -- | The `Expr` data type represents simple arithmetic expressions.
 data Expr = PlusE Expr Expr
@@ -21,14 +21,55 @@ data Expr = PlusE Expr Expr
 -- >>> simpleEval (NumE 8)
 -- 8
 --
--- >>> simpleEval (Plus (NumE 3) (Minus (NumE 2) (NumE 1)))
+-- >>> simpleEval (PlusE (NumE 3) (MinusE (NumE 2) (NumE 1)))
 -- 4
 --
--- >>> simpleEval (Times (Times (NumE 4) (NumE 6)) (Plus (NumE 1) (NumE 2)))
+-- >>> simpleEval (TimesE (TimesE (NumE 4) (NumE 6)) (PlusE (NumE 1) (NumE 2)))
 -- 72
+--
+-- >>> simpleEval (MinusE (NumE (-3)) (PlusE (NumE 1) (NumE 2)))
+-- -6
 
 simpleEval :: Expr -> Int
 simpleEval expr = error "TBD: simpleEval"
+
+
+
+
+-- | `opMaybe` takes a binary operation `op` of type `Int -> Int -> Int`
+--   and two expressions `m1` and `m2` of type `Maybe Int`.
+--   If either (or both) of `m1` and `m2` is `Nothing`, then `opMaybe`
+--   returns `Nothing`.  Otherwise, `m1` and `m2` are both `Int`s with
+--   `Just` wrappers around them, and `opMaybe` returns the result of
+--   combining those `Int` values using `op`, but wrapped in the `Just`
+--   constructor.
+--
+-- >>> opMaybe (+) (Just 3) (Just 5)
+-- Just 8
+--
+-- >>> opMaybe (-) (Just 3) (Just 5)
+-- Just (-2)
+--
+-- >>> opMaybe (*) (Just 3) (Just 5)
+-- Just 15
+--
+-- >>> opMaybe (+) (Just 3) Nothing
+-- Nothing
+--
+-- >>> opMaybe (-) Nothing (Just 3)
+-- Nothing
+--
+-- >>> opMaybe (*) Nothing Nothing
+-- Nothing
+--
+-- >>> opMaybe (\x y -> x + y + 5) (Just 3) (Just 2)
+-- Just 10
+--
+-- >>> opMaybe (\x y -> x + y + 5) Nothing (Just 2)
+-- Nothing
+
+opMaybe :: (Int -> Int -> Int) -> Maybe Int -> Maybe Int -> Maybe Int
+opMaybe op m1 m2 = error "TBD: opMaybe"
 
 
 
@@ -53,7 +94,7 @@ type ListEnv = [(String, Int)]
 -- Just 3
 --
 -- >>> varExprListEval [("x", 4), ("y", 7)] (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
--- Just (-3)
+-- Just (-1)
 --
 -- >>> varExprListEval [("x", 4), ("y", 7)] (TimesVE (Var "z") (NumVE 3))
 -- Nothing
@@ -64,8 +105,8 @@ type ListEnv = [(String, Int)]
 -- >>> varExprListEval [] (TimesVE (NumVE 7) (NumVE 3))
 -- Just 21
 
-varExprListEval :: VarExpr -> ListEnv -> Maybe Int
-varExprListEval expr env = error "TBD: varEval"
+varExprListEval :: ListEnv -> VarExpr -> Maybe Int
+varExprListEval env expr = error "TBD: varEval"
 
 
 
@@ -80,13 +121,13 @@ type FunEnv = String -> Maybe Int
 --   `varExprFunEval` returns `Nothing`.
 --   Otherwise, `varExprFunEval` returns the value of `e`, wrapped in `Just`.
 --
--- >>> varExprFunEval (\v -> if v == "x" then 3 else Nothing) (Var "x")
+-- >>> varExprFunEval (\v -> if v == "x" then Just 3 else Nothing) (Var "x")
 -- Just 3
 --
--- >>> varExprFunEval (\v -> if v == "x" then 4 else (if v == "y" then 7 else Nothing)) (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
--- Just (-3)
+-- >>> varExprFunEval (\v -> if v == "x" then Just 4 else (if v == "y" then Just 7 else Nothing)) (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
+-- Just (-1)
 --
--- >>> varExprFunEval (\v -> if v == "x" then 4 else (if v == "y" then 7 else Nothing)) (TimesVE (Var "z") (NumVE 3))
+-- >>> varExprFunEval (\v -> if v == "x" then Just 4 else (if v == "y" then Just 7 else Nothing)) (TimesVE (Var "z") (NumVE 3))
 -- Nothing
 --
 -- >>> varExprFunEval (\v -> Nothing) (TimesVE (Var "x") (NumVE 3))
@@ -95,30 +136,35 @@ type FunEnv = String -> Maybe Int
 -- >>> varExprFunEval (\v -> Nothing) (TimesVE (NumVE 7) (NumVE 3))
 -- Just 21
 
-varExprFunEval :: VarExpr -> FunEnv -> Maybe Int
-varExprFunEval expr env = error "TBD: varExprFunEval"
+varExprFunEval :: FunEnv -> VarExpr -> Maybe Int
+varExprFunEval env expr = error "TBD: varExprFunEval"
 
 
 
 
 -- | `show` takes a `VarExpr` and returns a printable string representation of it.
 --
--- >>> show (NumE 8)
+-- >>> show (NumVE 8)
 -- "8"
 -- 
 -- >>> show (TimesVE (NumVE 7) (NumVE 3))
 -- "(7 * 3)"
 -- 
--- >>> show (Plus (NumE 3) (Minus (NumE 2) (NumE 1)))
+-- >>> show (PlusVE (NumVE 3) (MinusVE (NumVE 2) (NumVE 1)))
 -- "(3 + (2 - 1))"
 -- 
--- >>> show (Times (Times (NumE 4) (NumE 6)) (Plus (NumE 1) (NumE 2)))
+-- >>> show (TimesVE (TimesVE (NumE 4) (NumVE 6)) (PlusVE (NumVE 1) (NumVE 2)))
 -- "((4 * 6) * (1 + 2))"
+--
+-- >>> show (Var "x")
+-- "x"
+--
+-- >>> show (TimesVE (Var "x") (PlusVE (NumVE 1) (Var "y")))
+-- "(x * (1 + y))"
 
 instance Show VarExpr where
   show :: VarExpr -> String
   show expr = error "TBD: show"
-
 
 
 
@@ -148,6 +194,24 @@ instance Eq VarExpr where
 
 
 -- | A type class for environments
+--
+-- >>> lookupInEnv "x" (extendEnv "x" 3 (emptyEnv :: ListEnv))
+-- Just 3
+--
+-- >>> lookupInEnv "y" (extendEnv "x" 3 (emptyEnv :: ListEnv))
+-- Nothing
+--
+-- >>> lookupInEnv "y" (extendEnv "x" 3 (extendEnv "y" 4 (emptyEnv :: ListEnv)))
+-- Just 4
+--
+-- >>> lookupInEnv "x" (extendEnv "x" 3 (emptyEnv :: FunEnv))
+-- Just 3
+--
+-- >>> lookupInEnv "y" (extendEnv "x" 3 (emptyEnv :: FunEnv))
+-- Nothing
+--
+-- >>> lookupInEnv "y" (extendEnv "x" 3 (extendEnv "y" 4 (emptyEnv :: FunEnv)))
+-- Just 4
 
 class Env a where
   emptyEnv :: a
@@ -160,11 +224,11 @@ instance Env ListEnv where
 
 
   lookupInEnv :: String -> ListEnv -> Maybe Int
-  lookupInEnv = error "TBD: lookupInEnv"
+  lookupInEnv s env = error "TBD: lookupInEnv"
 
 
   extendEnv :: String -> Int -> ListEnv -> ListEnv
-  extendEnv = error "TBD: extendEnv"
+  extendEnv s n env = error "TBD: extendEnv"
 
 instance Env FunEnv where
   emptyEnv :: FunEnv
@@ -172,11 +236,11 @@ instance Env FunEnv where
 
 
   lookupInEnv :: String -> FunEnv -> Maybe Int
-  lookupInEnv = error "TBD: lookupInEnv"
+  lookupInEnv s env = error "TBD: lookupInEnv"
 
 
   extendEnv :: String -> Int -> FunEnv -> FunEnv
-  extendEnv = error "TBD: extendEnv"
+  extendEnv s n env = error "TBD: extendEnv"
 
 
 
@@ -187,23 +251,38 @@ instance Env FunEnv where
 --   `varExprFunEval` returns `Nothing`.
 --   Otherwise, `varExprFunEval` returns the value of `e`, wrapped in `Just`.
 --
--- >>> varExprEval (extendEnv "x" 3 emptyEnv) (Var "x")
+-- >>> varExprEval (extendEnv "x" 3 (emptyEnv :: ListEnv)) (Var "x")
 -- Just 3
 --
--- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 emptyEnv)) (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
+-- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: ListEnv))) (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
 -- Just (-3)
 --
--- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 emptyEnv)) (TimesVE (Var "z") (NumVE 3))
+-- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: ListEnv))) (TimesVE (Var "z") (NumVE 3))
 -- Nothing
 --
--- >>> varExprEval emptyEnv (TimesVE (Var "x") (NumVE 3))
+-- >>> varExprEval (emptyEnv :: ListEnv) (TimesVE (Var "x") (NumVE 3))
 -- Nothing
 --
--- >>> varExprEval emptyEnv (TimesVE (NumVE 7) (NumVE 3))
+-- >>> varExprEval (emptyEnv :: ListEnv) (TimesVE (NumVE 7) (NumVE 3))
+-- Just 21
+--
+-- >>> varExprEval (extendEnv "x" 3 (emptyEnv :: FunEnv)) (Var "x")
+-- Just 3
+--
+-- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: FunEnv))) (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
+-- Just (-3)
+--
+-- >>> varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: FunEnv))) (TimesVE (Var "z") (NumVE 3))
+-- Nothing
+--
+-- >>> varExprEval (emptyEnv :: FunEnv) (TimesVE (Var "x") (NumVE 3))
+-- Nothing
+--
+-- >>> varExprEval (emptyEnv :: FunEnv) (TimesVE (NumVE 7) (NumVE 3))
 -- Just 21
 
-varExprEval :: Env a => VarExpr -> a -> Maybe Int
-varExprEval expr env = error "TBD: varExprEval"
+varExprEval :: Env a => a -> VarExpr -> Maybe Int
+varExprEval env expr = error "TBD: varExprEval"
 
 
 
@@ -213,28 +292,46 @@ varExprEval expr env = error "TBD: varExprEval"
 --   and evaluates each VarExpr using the provided environment,
 --   resulting in a list of `Maybe Int` values.
 --
--- >>> evalAll emptyEnv [(NumVE 30) (NumVE 40) (NumVE 20)]
+-- >>> evalAll (emptyEnv :: ListEnv) [NumVE 30, NumVE 40, NumVE 20]
 -- [Just 30, Just 40, Just 20]
 --
--- >>> evalAll emptyEnv [(TimesVE (Var "z") (NumVE 3)), (TimesVE (NumVE 0) (NumVE 3))]
+-- >>> evalAll (emptyEnv :: ListEnv) [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
 -- [Nothing, Just 0]
 --
--- >>> evalAll (extendEnv "z" 3 emptyEnv) [(NumVE 0) (MinusVE (NumVE 2) (NumVE 1)) (TimesVE (Var "z") (NumVE 3))]
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)) [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
 -- [Just 0, Just 1, Just 9]
 --
--- >>> evalAll emptyEnv [(TimesVE (NumVE 7) (NumVE 3)) (TimesVE (NumVE 3) (NumVE 7))]
+-- >>> evalAll (emptyEnv :: ListEnv) [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
 -- [Just 21, Just 21]
 --
--- >>> evalAll (extendEnv "z" 3 emptyEnv) [(Var "z") (TimesVE (Var "z") (Var "z")) (NumVE 1)]
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)) [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
 -- [Just 3, Just 9, Just 1]
 --
--- >>> sumEval (extendEnv "z" 3 emptyEnv) [(NumVE 1) (Var "x") (Var "z")]
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)) [NumVE 1, Var "x", Var "z"]
+-- [Just 1, Nothing, Just 3]]
+--
+-- >>> evalAll (emptyEnv :: FunEnv) [NumVE 30, NumVE 40, NumVE 20]
+-- [Just 30, Just 40, Just 20]
+--
+-- >>> evalAll (emptyEnv :: FunEnv) [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
+-- [Nothing, Just 0]
+--
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)) [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
+-- [Just 0, Just 1, Just 9]
+--
+-- >>> evalAll (emptyEnv :: FunEnv) [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
+-- [Just 21, Just 21]
+--
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)) [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
+-- [Just 3, Just 9, Just 1]
+--
+-- >>> evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)) [NumVE 1, Var "x", Var "z"]
 -- [Just 1, Nothing, Just 3]]
 
 evalAll :: Env a => a -> [VarExpr] -> [Maybe Int]
 evalAll env exprs = map f exprs
   where f :: VarExpr -> Maybe Int
-        f = error "TBD: evalAll"
+        f expr = error "TBD: evalAll"
 
 
 
@@ -246,25 +343,44 @@ evalAll env exprs = map f exprs
 --   otherwise, it should return the sum of the `Int`s they evaluate to,
 --   wrapped in the `Just` constructor.
 --
--- >>> sumEval emptyEnv [(NumVE 30) (NumVE 40) (NumVE 20)]
+-- >>> sumEval (emptyEnv :: ListEnv) [NumVE 30, NumVE 40, NumVE 20]
 -- Just 90
 --
--- >>> sumEval emptyEnv [(TimesVE (Var "z") (NumVE 3)), (TimesVE (NumVE 0) (NumVE 3))]
+-- >>> sumEval (emptyEnv :: ListEnv) [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
 -- Nothing
 --
--- >>> sumEval (extendEnv "z" 3 emptyEnv) [(NumVE 0) (MinusVE (NumVE 2) (NumVE 1)) (TimesVE (Var "z") (NumVE 3))]
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)) [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
 -- Just 10
 --
--- >>> sumEval emptyEnv [(TimesVE (NumVE 7) (NumVE 3)) (TimesVE (NumVE 3) (NumVE 7))]
+-- >>> sumEval (emptyEnv :: ListEnv) [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
 -- Just 42
 --
--- >>> sumEval (extendEnv "z" 3 emptyEnv) [(Var "z") (TimesVE (Var "z") (Var "z")) (NumVE 1)]
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)) [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
 -- Just 13
 --
--- >>> sumEval (extendEnv "z" 3 emptyEnv) [(NumVE 1) (Var "x") (Var "z")]
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)) [NumVE 1, Var "x", Var "z"]
+-- Nothing
+--
+-- >>> sumEval (emptyEnv :: FunEnv) [NumVE 30, NumVE 40, NumVE 20]
+-- Just 90
+--
+-- >>> sumEval (emptyEnv :: FunEnv) [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
+-- Nothing
+--
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)) [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
+-- Just 10
+--
+-- >>> sumEval (emptyEnv :: FunEnv) [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
+-- Just 42
+--
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)) [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
+-- Just 13
+--
+-- >>> sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)) [NumVE 1, Var "x", Var "z"]
 -- Nothing
 
 sumEval :: Env a => a -> [VarExpr] -> Maybe Int
 sumEval env exprs = foldr f (Just 0) exprs
   where f :: VarExpr -> Maybe Int -> Maybe Int
-        f = error "TBD: sumEval"
+        f expr m = error "TBD: sumEval"
+
