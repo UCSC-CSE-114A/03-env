@@ -208,11 +208,6 @@ unit sc = testGroup "Unit" [
       (Just 4)
       "instance Env FunEnv 3"
    , mkTest
-      (lookupInEnv "y")
-      (extendEnv "x" 3 (extendEnv "y" 4 (emptyEnv :: FunEnv)))
-      (Just 4)
-      "instance Env FunEnv 3"
-   , mkTest
       (varExprEval (extendEnv "x" 3 (emptyEnv :: ListEnv)))
       (Var "x")
       (Just 3)

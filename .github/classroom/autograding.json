@@ -1,0 +1,742 @@
+[
+    {
+        "name": "simpleEval 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"simpleEval 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "simpleEval 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"simpleEval 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "simpleEval 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"simpleEval 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "simpleEval 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"simpleEval 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 7",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 7\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "opMaybe 8",
+        "run": "stack test --allow-different-user --ta '--pattern \"opMaybe 8\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1.25
+    },
+    {
+        "name": "varExprListEval 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprListEval 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprListEval 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprListEval 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprListEval 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprListEval 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprListEval 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprListEval 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprListEval 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprListEval 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprFunEval 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprFunEval 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprFunEval 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprFunEval 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprFunEval 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprFunEval 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprFunEval 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprFunEval 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "varExprFunEval 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprFunEval 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 3
+    },
+    {
+        "name": "show 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "show 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "show 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "show 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "show 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "show 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"show 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "(==) 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"(==) 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "instance Env ListEnv 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env ListEnv 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "instance Env ListEnv 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env ListEnv 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "instance Env ListEnv 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env ListEnv 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "instance Env FunEnv 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env FunEnv 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "instance Env FunEnv 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env FunEnv 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "instance Env FunEnv 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"instance Env FunEnv 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 5
+    },
+    {
+        "name": "varExprEval (ListEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (ListEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (ListEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (ListEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (ListEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (ListEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (ListEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (ListEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (ListEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (ListEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (FunEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (FunEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (FunEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (FunEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (FunEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (FunEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (FunEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (FunEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "varExprEval (FunEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"varExprEval (FunEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 2
+    },
+    {
+        "name": "evalAll (ListEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (ListEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (ListEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (ListEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (ListEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (ListEnv) 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (ListEnv) 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "evalAll (FunEnv) 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"evalAll (FunEnv) 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (ListEnv) 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (ListEnv) 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 1",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 1\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 2",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 2\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 3",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 3\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 4",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 4\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 5",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 5\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    },
+    {
+        "name": "sumEval (FunEnv) 6",
+        "run": "stack test --allow-different-user --ta '--pattern \"sumEval (FunEnv) 6\"'",
+        "setup": "",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+    }
+]
