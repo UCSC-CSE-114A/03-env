@@ -151,32 +151,32 @@ unit sc = testGroup "Unit" [
       ((==) (TimesVE (NumVE 7) (NumVE 3)))
       (TimesVE (NumVE 3) (NumVE 7))
       True
-      "(==) 1"
+      "Eq 1"
    , mkTest
       ((==) (TimesVE (NumVE 7) (NumVE 3)))
       (TimesVE (NumVE 6) (NumVE 7))
       False
-      "(==) 2"
+      "Eq 2"
    , mkTest
       ((==) (NumVE 2))
       (NumVE 3)
       False
-      "(==) 3"
+      "Eq 3"
    , mkTest
       ((==) (Var "x"))
       (Var "x")
       True
-      "(==) 4"
+      "Eq 4"
    , mkTest
       ((==) (Var "y"))
       (Var "x")
       True
-      "(==) 5"
+      "Eq 5"
    , mkTest
       ((==) (TimesVE (NumVE 7) (NumVE 3)))
       (TimesVE (NumVE 7) (Var "x"))
       False
-      "(==) 6"
+      "Eq 6"
    , mkTest
       (lookupInEnv "x")
       (extendEnv "x" 3 (emptyEnv :: ListEnv))
@@ -211,172 +211,172 @@ unit sc = testGroup "Unit" [
       (varExprEval (extendEnv "x" 3 (emptyEnv :: ListEnv)))
       (Var "x")
       (Just 3)
-      "varExprEval (ListEnv) 1"
+      "varExprEval ListEnv 1"
    , mkTest
       (varExprEval (extendEnv "x" 4 (extendEnv "y" 7 (emptyEnv :: ListEnv))))
       (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
       (Just (-1))
-      "varExprEval (ListEnv) 2"
+      "varExprEval ListEnv 2"
    , mkTest
       (varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: ListEnv))))
       (TimesVE (Var "z") (NumVE 3))
       Nothing
-      "varExprEval (ListEnv) 3"
+      "varExprEval ListEnv 3"
    , mkTest
       (varExprEval (emptyEnv :: ListEnv))
       (TimesVE (Var "x") (NumVE 3))
       Nothing
-      "varExprEval (ListEnv) 4"
+      "varExprEval ListEnv 4"
    , mkTest
       (varExprEval (emptyEnv :: ListEnv))
       (TimesVE (NumVE 7) (NumVE 3))
       (Just 21)
-      "varExprEval (ListEnv) 5"
+      "varExprEval ListEnv 5"
    , mkTest
       (varExprEval (extendEnv "x" 3 (emptyEnv :: FunEnv)))
       (Var "x")
       (Just 3)
-      "varExprEval (FunEnv) 1"
+      "varExprEval FunEnv 1"
    , mkTest
       (varExprEval (extendEnv "x" 4 (extendEnv "y" 7 (emptyEnv :: FunEnv))))
       (PlusVE (Var "x") (MinusVE (NumVE 2) (Var "y")))
       (Just (-1))
-      "varExprEval (FunEnv) 2"
+      "varExprEval FunEnv 2"
    , mkTest
       (varExprEval (extendEnv "x" 3 (extendEnv "y" 7 (emptyEnv :: FunEnv))))
       (TimesVE (Var "z") (NumVE 3))
       Nothing
-      "varExprEval (FunEnv) 3"
+      "varExprEval FunEnv 3"
    , mkTest
       (varExprEval (emptyEnv :: FunEnv))
       (TimesVE (Var "x") (NumVE 3))
       Nothing
-      "varExprEval (FunEnv) 4"
+      "varExprEval FunEnv 4"
    , mkTest
       (varExprEval (emptyEnv :: FunEnv))
       (TimesVE (NumVE 7) (NumVE 3))
       (Just 21)
-      "varExprEval (FunEnv) 5"
+      "varExprEval FunEnv 5"
    , mkTest
       (evalAll (emptyEnv :: ListEnv))
       [NumVE 30, NumVE 40, NumVE 20]
       [Just 30, Just 40, Just 20]
-      "evalAll (ListEnv) 1"
+      "evalAll ListEnv 1"
    , mkTest
       (evalAll (emptyEnv :: ListEnv))
       [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
       [Nothing, Just 0]
-      "evalAll (ListEnv) 2"
+      "evalAll ListEnv 2"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
       [Just 0, Just 1, Just 9]
-      "evalAll (ListEnv) 3"
+      "evalAll ListEnv 3"
    , mkTest
       (evalAll (emptyEnv :: ListEnv))
       [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
       [Just 21, Just 21]
-      "evalAll (ListEnv) 4"
+      "evalAll ListEnv 4"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
       [Just 3, Just 9, Just 1]
-      "evalAll (ListEnv) 5"
+      "evalAll ListEnv 5"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [NumVE 1, Var "x", Var "z"]
       [Just 1, Nothing, Just 3]
-      "evalAll (ListEnv) 6"
+      "evalAll ListEnv 6"
    , mkTest
       (evalAll (emptyEnv :: FunEnv))
       [NumVE 30, NumVE 40, NumVE 20]
       [Just 30, Just 40, Just 20]
-      "evalAll (FunEnv) 1"
+      "evalAll FunEnv 1"
    , mkTest
       (evalAll (emptyEnv :: FunEnv))
       [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
       [Nothing, Just 0]
-      "evalAll (FunEnv) 2"
+      "evalAll FunEnv 2"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
       [Just 0, Just 1, Just 9]
-      "evalAll (FunEnv) 3"
+      "evalAll FunEnv 3"
    , mkTest
       (evalAll (emptyEnv :: FunEnv))
       [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
       [Just 21, Just 21]
-      "evalAll (FunEnv) 4"
+      "evalAll FunEnv 4"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
       [Just 3, Just 9, Just 1]
-      "evalAll (FunEnv) 5"
+      "evalAll FunEnv 5"
    , mkTest
       (evalAll (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [NumVE 1, Var "x", Var "z"]
       [Just 1, Nothing, Just 3]
-      "evalAll (FunEnv) 6"
+      "evalAll FunEnv 6"
    , mkTest
       (sumEval (emptyEnv :: ListEnv))
       [NumVE 30, NumVE 40, NumVE 20]
       (Just 90)
-      "sumEval (ListEnv) 1"
+      "sumEval ListEnv 1"
    , mkTest
       (sumEval (emptyEnv :: ListEnv))
       [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
       Nothing
-      "sumEval (ListEnv) 2"
+      "sumEval ListEnv 2"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
       (Just 10)
-      "sumEval (ListEnv) 3"
+      "sumEval ListEnv 3"
    , mkTest
       (sumEval (emptyEnv :: ListEnv))
       [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
       (Just 42)
-      "sumEval (ListEnv) 4"
+      "sumEval ListEnv 4"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
       (Just 13)
-      "sumEval (ListEnv) 5"
+      "sumEval ListEnv 5"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: ListEnv)))
       [NumVE 1, Var "x", Var "z"]
       Nothing
-      "sumEval (ListEnv) 6"
+      "sumEval ListEnv 6"
    , mkTest
       (sumEval (emptyEnv :: FunEnv))
       [NumVE 30, NumVE 40, NumVE 20]
       (Just 90)
-      "sumEval (FunEnv) 1"
+      "sumEval FunEnv 1"
    , mkTest
       (sumEval (emptyEnv :: FunEnv))
       [TimesVE (Var "z") (NumVE 3), TimesVE (NumVE 0) (NumVE 3)]
       Nothing
-      "sumEval (FunEnv) 2"
+      "sumEval FunEnv 2"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [NumVE 0, MinusVE (NumVE 2) (NumVE 1), TimesVE (Var "z") (NumVE 3)]
       (Just 10)
-      "sumEval (FunEnv) 3"
+      "sumEval FunEnv 3"
    , mkTest
       (sumEval (emptyEnv :: FunEnv))
       [TimesVE (NumVE 7) (NumVE 3), TimesVE (NumVE 3) (NumVE 7)]
       (Just 42)
-      "sumEval (FunEnv) 4"
+      "sumEval FunEnv 4"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [Var "z", TimesVE (Var "z") (Var "z"), NumVE 1]
       (Just 13)
-      "sumEval (FunEnv) 5"
+      "sumEval FunEnv 5"
    , mkTest
       (sumEval (extendEnv "z" 3 (emptyEnv :: FunEnv)))
       [NumVE 1, Var "x", Var "z"]
       Nothing
-      "sumEval (FunEnv) 6"
+      "sumEval FunEnv 6"
   ]
   where
     mkTest :: (Show b, Eq b) => (a -> b) -> a -> b -> String -> TestTree
