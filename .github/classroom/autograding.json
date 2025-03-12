@@ -1,6 +1,28 @@
 {
     "tests": [
         {
+            "name": "INTEGRITY.md",
+            "run": "test -f ./INTEGRITY.md",
+            "setup": "",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 0,
+            "stop-on-fail": true
+        },
+        {
+            "name": "Build Check",
+            "run": "stack build --test --no-run-tests",
+            "setup": "",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 30,
+            "points": 0,
+            "stop-on-fail": true
+        },
+        {
             "name": "simpleEval 1",
             "run": "stack test --allow-different-user --ta '--pattern \"simpleEval 1\"'",
             "setup": "",
